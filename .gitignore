@@ -9,3 +9,4 @@
 /*.pem
 .byebug_history
 Gemfile.lock
+/*.gem

@@ -3,21 +3,21 @@
 require_relative "lib/zatca/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "zatca"
+  spec.name = "zatca-sdk"
   spec.version = ZATCA::VERSION
   spec.authors = ["Omar Bahareth"]
-  spec.email = ["obahareth@mrsool.co"]
+  spec.email = ["omar@omar.engineer"]
 
   spec.summary = "A library for generating QR Codes for the e-invoice standard by ZATCA in Saudi Arabia."
   spec.description = "A library for generating QR Codes for the e-invoice standard by ZATCA in Saudi Arabia."
-  spec.homepage = "https://github.com/mrsool/zatca"
+  spec.homepage = "https://github.com/obahareth/zatca"
   spec.required_ruby_version = ">= 2.5.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/mrsool/zatca"
-  spec.metadata["changelog_uri"] = "https://github.com/mrsool/zatca/releases"
+  spec.metadata["source_code_uri"] = "https://github.com/obahareth/zatca"
+  spec.metadata["changelog_uri"] = "https://github.com/obahareth/zatca/releases"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
