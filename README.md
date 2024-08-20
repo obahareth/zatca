@@ -9,7 +9,7 @@ This library supports both Phase 1 and Phase 2. Phase 2 support is still new so 
 
 ## Rubygems
 ```sh
-gem install zatca-zdk
+gem install zatca-sdk
 ```
 
 ## Bundler
