@@ -18,7 +18,7 @@ class ZATCA::UBL::CommonAggregateComponents::TaxCategory < ZATCA::UBL::BaseCompo
   def initialize(
     tax_percent: "15.00", id: "S", scheme_agency_id: "6",
     scheme_id: "UN/ECE 5305", tax_scheme_id: "VAT",
-    tax_scheme_scheme_id: "UN/ECE 5153", tax_exemption_reason_code: nil
+    tax_scheme_scheme_id: "UN/ECE 5153", tax_exemption_reason_code: nil, tax_exemption_reason: nil
   )
     super()
 
@@ -29,6 +29,7 @@ class ZATCA::UBL::CommonAggregateComponents::TaxCategory < ZATCA::UBL::BaseCompo
     @tax_scheme_id = tax_scheme_id
     @tax_scheme_scheme_id = tax_scheme_scheme_id
     @tax_exemption_reason_code = tax_exemption_reason_code
+    @tax_exemption_reason = tax_exemption_reason
   end
 
   def name
@@ -38,8 +39,9 @@ class ZATCA::UBL::CommonAggregateComponents::TaxCategory < ZATCA::UBL::BaseCompo
   def elements
     [
       ZATCA::UBL::BaseComponent.new(name: "cbc:ID", value: @id, attributes: {"schemeAgencyID" => @scheme_agency_id, "schemeID" => @scheme_id}.compact),
-      tax_exemption_reason_code_element,
       ZATCA::UBL::BaseComponent.new(name: "cbc:Percent", value: @tax_percent),
+      tax_exemption_reason_code_element,
+      tax_exemption_reason_reason_text_element,
       ZATCA::UBL::BaseComponent.new(name: "cac:TaxScheme", elements: [
         ZATCA::UBL::BaseComponent.new(name: "cbc:ID", value: @tax_scheme_id, attributes: {"schemeAgencyID" => @scheme_agency_id, "schemeID" => @tax_scheme_scheme_id}.compact)
       ])
@@ -51,6 +53,11 @@ class ZATCA::UBL::CommonAggregateComponents::TaxCategory < ZATCA::UBL::BaseCompo
   def tax_exemption_reason_code_element
     if @tax_exemption_reason_code.present?
       ZATCA::UBL::BaseComponent.new(name: "cbc:TaxExemptionReasonCode", value: @tax_exemption_reason_code)
+    end
+  end
+  def tax_exemption_reason_reason_text_element
+    if @tax_exemption_reason.present?
+      ZATCA::UBL::BaseComponent.new(name: "cbc:TaxExemptionReason", value: @tax_exemption_reason)
     end
   end
 end
