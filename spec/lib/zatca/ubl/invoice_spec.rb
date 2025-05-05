@@ -13,6 +13,13 @@ describe ZATCA::UBL::Invoice do
       expect(invoice.generate_xml(canonicalized: false, spaces: 2)).to eq(zatca_xml)
     end
 
+    it "should generate multi-tax-type xml that matches ZATCA's" do
+      invoice = construct_simplified_invoice_multi_tax_type
+      zatca_xml = read_xml_fixture("simplified_invoice_multi_tax_type_signed.xml")
+
+      expect(invoice.generate_xml(canonicalized: false, spaces: 2)).to eq(zatca_xml)
+    end
+
     it "should be able to create an unsigned invoice qr-less invoice then add them later" do
       invoice = construct_unsigned_simplified_invoice
 
